@@ -1,0 +1,75 @@
+#============================================================================================================================| 
+#    _____                      .__      _________.__                                     
+#   /     \   _________________ |  |__  /   _____/|  |__   ____ ______  ______    .__     
+#  /  \ /  \ /  _ \_  __ \____ \|  |  \ \_____  \ |  |  \ /  _ \\____ \/  ___/  __|  |___ 
+# /    Y    (  <_> )  | \/  |_> >   Y  \/        \|   Y  (  <_> )  |_> >___ \  /__    __/ 
+# \____|__  /\____/|__|  |   __/|___|  /_______  /|___|  /\____/|   __/____  >    |__|    
+#         \/             |__|        \/        \/      \/       |__|       \/             
+#============================================================================================================================|
+#
+# Plugin Version: APLHA 1.0.0
+# Spigot Link: TBD
+# Author's Discord Name: Morphie#6969
+# Author's Discord Server: https://discord.gg/cTymWvT
+# 
+# If you have issues or questions feel free to message me on spigot OR discord.
+# Please do keep in mind however that I will respond when I can! <3
+#
+#============================================================================================================================|
+
+# General plugin settings.
+Settings:
+  # Should the plugin automatically delete player data files? (This will only delete files if the player does NOT have a shop set.)
+  AutoDeletePlayerFiles:
+    Enabled: false
+    # Number of days a player has to be offline before attempting to remove their player file.
+    DaysTillDeletion: 30
+  CommandConfirmation:
+    SetShop: true
+    RemoveShop: true
+    AdvertPurchase: true
+  # Cost to set a player shop. (mshop.setshop : Permissions Required.)
+  SetshopPrice: 
+    Enabled: false
+    Price: 100.00
+  TeleportTimer:
+    Enabled: true
+    
+
+#============================================================================================================================|
+
+# Main /ps menu settings. (Hopefully full menu configuration in the future. <3) 
+PlayerShopMenu:
+  # Enabling this section will set 6 purchase-able advert slots at the top of the /ps menu. These slots are first come first serve and will each have their own timers.
+  # Timers being set at the time of purchase and set to the configurable day counter below. Days being based off of the time on the system.
+  AdvertSlots:
+    Enabled: true
+    DefaultItem: 'BARRIER'
+    Price: 1000.0
+    DaysTillRemoved: 7
+  # The item that is used in the main /pshops menu. In order to use player heads you need have
+  # head-database set to true and set head-id to PLAYER_HEAD. Alternatively you can use the "HeadDatabase"
+  # plugin to set the item to a custom texture by setting head-id to the id of a HeadDatabase head.
+  PlayerMenuItem:
+    HeadDatabase: true
+    HeadID: 'PLAYER_HEAD'
+    Item: 'EMERALD'
+  NavigationItems:
+    PageItem: 'MAP'
+    BackItem: 'ARROW'
+    NextItem: 'ARROW'
+     
+#============================================================================================================================|
+
+# Tag System: This tag system allows you as an admin to set up shop tags. You can choose the names, how many a player can use at a time, and the colors of the tags.
+# These tags are then used in the main /ps menu where players can filter a specific tag. This allows players to search for things specifically.
+Tags:
+  Enabled: true
+  # The number of takes a user can have at once. This number shouldn't exceed the number of custom tags.
+  TagsPerUser: 1
+  # The default tag that the filter uses to show all shops.
+  DefaultTag: "&fNone"
+  CustomTags:
+    - "&9Enchants"
+
+#============================================================================================================================|

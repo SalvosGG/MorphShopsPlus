@@ -1,0 +1,11 @@
+name: MorphShopsPremium
+version: 1.0.0
+main: net.naturva.morphie.ms.MorphShops
+author: Morphie
+api-version: 1.13
+depend: [Vault]
+commands:
+ ps:
+   description: Main command for MorphShops.
+   usage: /<command>
+   aliases: [ps, pshop, ms, mshop]
