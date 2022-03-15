@@ -11,7 +11,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ChatColor;
-import gg.salvos.morphie.util.PlayerData.PlayerDataManager;
+import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 
 public class CheckDangers {
 	

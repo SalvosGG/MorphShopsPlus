@@ -1,4 +1,4 @@
-package gg.salvos.morphie.util.PlayerData;
+package gg.salvos.morphie.util.playerdata;
 
 import java.io.File;
 import java.util.Date;

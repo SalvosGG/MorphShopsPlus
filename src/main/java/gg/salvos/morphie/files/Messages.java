@@ -28,20 +28,21 @@ public class Messages {
 				
 				this.messagesCFG = YamlConfiguration.loadConfiguration(this.messagesFile);
 	        
-				this.messagesCFG.addDefault("Prefix", "&8[&a&l✔&8] &3&lMorphShops+ &8&l➙ ");
-				this.messagesCFG.addDefault("ErrorPrefix", "&8[&c&l✕&8] &3&lMorphShops+ &8&l➙ ");
+				this.messagesCFG.addDefault("Prefix", "&8[&a&l✔&8] &9&lMorphShops&a+ &8&l➙ ");
+				this.messagesCFG.addDefault("ErrorPrefix", "&8[&c&l✕&8] &9&lMorphShops&a+ &8&l➙ ");
 				
 				this.messagesCFG.addDefault("NoPermission", "&7Invalid permissions!");
 				this.messagesCFG.addDefault("NoPlayer", "&7Player does not exist!");
 				this.messagesCFG.addDefault("NoSetShop", "&7You haven't set a shop yet! &8(&a/ps set&8)");
 				this.messagesCFG.addDefault("NoPlayerSetShop", "&7This player hasn't set a shop yet!");
-				this.messagesCFG.addDefault("NoMoney", "&7Invalid funds! &8(&3Cost&8: &aCOST&8)");
+				this.messagesCFG.addDefault("NoMoney", "&7Invalid funds! &8(&9Cost&8: &aCOST&8)");
 				this.messagesCFG.addDefault("NoArgs", "&7Invalid args. Use &a/ps &7for commands!");
+				this.messagesCFG.addDefault("NotAPlayer", "&7only players can run this command!");
 				this.messagesCFG.addDefault("PlayerNameChange", "&7Player shop cannot be found! Name change?");
 				
 				this.messagesCFG.addDefault("Advert.Message", "&7Advert successfully purchased for &bCOST&7! &7Be sure to check out &b/ps advertise lore &7to add a advert message!");
 				this.messagesCFG.addDefault("Advert.AlreadyPurchased", "&7You already have an advert! Use &b/ps advertise lore &7to add a personal message to your advert!");
-				this.messagesCFG.addDefault("Advert.ListFull", "&7Advert list is currently full! Wait until there is a advert reset to try agian.");
+				this.messagesCFG.addDefault("Advert.ListFull", "&7Advert list is currently full! Wait until there is a advert reset to try again.");
 				this.messagesCFG.addDefault("Advert.ResetBroadcast", "&7Adverts have been reset! Use &b/ps advertise &7 to buy a new spot!");
 				this.messagesCFG.addDefault("Advert.NoAdverts", "&7There are currently no adverts!");
 				this.messagesCFG.addDefault("Advert.Usage", "&7Use &b/ps advertise &7to buy one!");
@@ -51,8 +52,8 @@ public class Messages {
 				this.messagesCFG.addDefault("Advert.ConfirmMessage", "&7Type &b/ps advertise &7again to confirm! This will cost&8: &bCOST");
 				
 				this.messagesCFG.addDefault("Commands.Header", "&7&m--&8&m-&7&m----------------------------------------------&8&m-&7&m--");
-				this.messagesCFG.addDefault("Commands.Title", "&3&lMorphShops&a+ &8» &aVERSION");
-				this.messagesCFG.addDefault("Commands.Alias", "&3&lAliases&8: &aps, pshop, ms, mshop");
+				this.messagesCFG.addDefault("Commands.Title", "&9&lMorphShops&a+ &8» &aVERSION");
+				this.messagesCFG.addDefault("Commands.Alias", "&9&lAliases&8: &aps, pshop, ms, mshop");
 				this.messagesCFG.addDefault("Commands.Ps", "&8» &a/ps &8- &7Shows this text menu.");
 				this.messagesCFG.addDefault("Commands.PsSet", "&8» &a/ps set &8- &7Sets your player shop at your current location.");
 				this.messagesCFG.addDefault("Commands.PsMenu", "&8» &a/ps menu &8 - &7Opens the shop advertisement menu.");
@@ -63,8 +64,8 @@ public class Messages {
 				this.messagesCFG.addDefault("Commands.PsAdvertise", "&8» &a/ps advertise &8- &7Buy an advert spot for a set cost.");
 				this.messagesCFG.addDefault("Commands.PsLore", "&8» &a/ps lore <loreline> <lore> &8- &7Adds a custom message to your advert. &8(&7Only up to 3 lines!&8)");
 				this.messagesCFG.addDefault("Commands.PsLoreDelete", "&8» &a/ps lore delete &8- &7Reset all lore lines!");
-				this.messagesCFG.addDefault("Commands.PsReset", "&8» &3/ps reset &8- &7Resets the advert list!");
-				this.messagesCFG.addDefault("Commands.PsReload", "&8» &3/ps reload &8- &7Reloads all plugin files!");
+				this.messagesCFG.addDefault("Commands.PsReset", "&8» &9/ps reset &8- &7Resets the advert list!");
+				this.messagesCFG.addDefault("Commands.PsReload", "&8» &9/ps reload &8- &7Reloads all plugin files!");
 				this.messagesCFG.addDefault("Commands.Footer", "&7&m--&8&m-&7&m----------------------------------------------&8&m-&7&m--");
 				
 				this.messagesCFG.addDefault("LockedShopMessage", "&7This user's shop is currently locked!");
@@ -91,7 +92,7 @@ public class Messages {
 				list3.add(" ");
 				list3.add("&8« &7PREV_TAG &8| &fCURRENT_TAG &8| &7NEXT_TAG &8»");
 				list3.add(" ");
-				list3.add("&7Click to cycle through availible tags!");
+				list3.add("&7Click to cycle through available tags!");
 				list3.add(" ");
 				
 				List<String> list4 = new ArrayList<String>();
@@ -104,16 +105,16 @@ public class Messages {
 				list5.add("&7Click to go to the next page!");
 				list5.add(" ");
 				
-				this.messagesCFG.addDefault("Menu.PlayerShops.Title", "&8» &3&lMorphShops&8: &aPlayer Shops &8«");
-				this.messagesCFG.addDefault("Menu.PlayerShops.ShopTitle", "&3&lPLAYER's &ashop.");
-				this.messagesCFG.addDefault("Menu.PlayerShops.InfoBook", "&3&lInformation&8:");
+				this.messagesCFG.addDefault("Menu.PlayerShops.Title", "&8» &9&lMorphShops&8: &aPlayer Shops &8«");
+				this.messagesCFG.addDefault("Menu.PlayerShops.ShopTitle", "&9&lPLAYER's &ashop.");
+				this.messagesCFG.addDefault("Menu.PlayerShops.InfoBook", "&9&lInformation&8:");
 				this.messagesCFG.addDefault("Menu.PlayerShops.InfoBookLore", list2);
-				this.messagesCFG.addDefault("Menu.PlayerShops.TagFilterTitle", "&3&lTag Filter&8:");
+				this.messagesCFG.addDefault("Menu.PlayerShops.TagFilterTitle", "&9&lTag Filter&8:");
 				this.messagesCFG.addDefault("Menu.PlayerShops.TagFilterLore", list3);
-				this.messagesCFG.addDefault("Menu.PlayerShops.PageBackTitle", "&3&lPrevious Page&8:");
+				this.messagesCFG.addDefault("Menu.PlayerShops.PageBackTitle", "&9&lPrevious Page&8:");
 				this.messagesCFG.addDefault("Menu.PlayerShops.PageBackLore", list4);
-				this.messagesCFG.addDefault("Menu.PlayerShops.PageTitle", "&3&lCurrent Page&8: &aPAGE");
-				this.messagesCFG.addDefault("Menu.PlayerShops.PageNextTitle", "&3&lNext Page&8:");
+				this.messagesCFG.addDefault("Menu.PlayerShops.PageTitle", "&9&lCurrent Page&8: &aPAGE");
+				this.messagesCFG.addDefault("Menu.PlayerShops.PageNextTitle", "&9&lNext Page&8:");
 				this.messagesCFG.addDefault("Menu.PlayerShops.PageNextLore", list5);
 				this.messagesCFG.addDefault("Menu.PlayerShops.DefaultShopLore", "&7Come to my shop I've got much product!");
 				this.messagesCFG.addDefault("Menu.PlayerShops.LockedShop", "&8[&c&l✕&8] &7Shop currently locked.");

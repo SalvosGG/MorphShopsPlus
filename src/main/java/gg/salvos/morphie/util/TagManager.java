@@ -1,7 +1,7 @@
 package gg.salvos.morphie.util;
 
 import gg.salvos.morphie.MorphShops;
-import gg.salvos.morphie.util.PlayerData.PlayerDataManager;
+import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 
 import java.util.List;
 import java.util.UUID;

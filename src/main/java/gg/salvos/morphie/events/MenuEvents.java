@@ -4,7 +4,7 @@ import gg.salvos.morphie.MorphShops;
 import gg.salvos.morphie.menus.PlayerShops;
 import gg.salvos.morphie.util.TagManager;
 import gg.salvos.morphie.util.MessagesManager;
-import gg.salvos.morphie.util.PlayerData.PlayerDataManager;
+import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -54,7 +54,7 @@ public class MenuEvents implements Listener {
                     new PlayerShops(plugin).openGUIPlayerShop(player);
                 }
             }
+            event.setCancelled(true);
         }
-        event.setCancelled(true);
     }
 }

@@ -1,6 +1,6 @@
-name: MorphShopsPremium
-version: 1.0.0
-main: net.naturva.morphie.ms.MorphShops
+name: MorphShopsPlus
+version: 1.0-ALPHA
+main: gg.salvos.morphie.MorphShops
 author: Morphie
 api-version: 1.13
 depend: [Vault]

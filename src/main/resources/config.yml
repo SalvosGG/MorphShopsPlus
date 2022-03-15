@@ -7,13 +7,13 @@
 #         \/             |__|        \/        \/      \/       |__|       \/             
 #============================================================================================================================|
 #
-# Plugin Version: APLHA 1.0.0
+# Plugin Version: APLHA 1.0
 # Spigot Link: TBD
 # Author's Discord Name: Morphie#6969
 # Author's Discord Server: https://discord.gg/cTymWvT
 # 
 # If you have issues or questions feel free to message me on spigot OR discord.
-# Please do keep in mind however that I will respond when I can! <3
+# Please do keep in mind however that I will respond when I can!
 #
 #============================================================================================================================|
 
@@ -29,12 +29,11 @@ Settings:
     RemoveShop: true
     AdvertPurchase: true
   # Cost to set a player shop. (mshop.setshop : Permissions Required.)
-  SetshopPrice: 
+  SetShopPrice:
     Enabled: false
     Price: 100.00
   TeleportTimer:
     Enabled: true
-    
 
 #============================================================================================================================|
 
@@ -65,7 +64,7 @@ PlayerShopMenu:
 # These tags are then used in the main /ps menu where players can filter a specific tag. This allows players to search for things specifically.
 Tags:
   Enabled: true
-  # The number of takes a user can have at once. This number shouldn't exceed the number of custom tags.
+  # The number of tags a user can have at once. This number shouldn't exceed the number of custom tags.
   TagsPerUser: 1
   # The default tag that the filter uses to show all shops.
   DefaultTag: "&fNone"

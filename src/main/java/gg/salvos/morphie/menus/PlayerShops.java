@@ -2,11 +2,16 @@ package gg.salvos.morphie.menus;
 
 import gg.salvos.morphie.MorphShops;
 import gg.salvos.morphie.util.GUIItemManager;
+import gg.salvos.morphie.util.GetPlayerShops;
 import gg.salvos.morphie.util.MessagesManager;
+import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+
+import java.util.List;
+import java.util.UUID;
 
 public class PlayerShops {
 	
@@ -53,18 +58,37 @@ public class PlayerShops {
 			Menu.setItem(25, new GUIItemManager(plugin).createInventoryGlassItem("GRAY_STAINED_GLASS_PANE", 1, " ", null, false));
 		}
 		
-		// Player Shop Slots >> (9 slots filled in by time of creation? Easiest way is to make it by uuid or random each time.)
-		
-		Menu.setItem(27, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(28, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(29, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(30, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(31, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(32, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(33, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(34, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		Menu.setItem(35, new GUIItemManager(plugin).createInventoryItem("PLAYER_HEAD", 1, "TEST HEAD", new MessagesManager(plugin).getLoreList("Menu.CreditsLore"), false));
-		
+		// Player Shop Slots >> (9 slots)
+		String currentTag = new PlayerDataManager(plugin).getString(player.getUniqueId(), "PlayerData.CurrentTag");
+		if (new GetPlayerShops(plugin).getAllShopsList(currentTag) != null) {
+			List<String> shops = new GetPlayerShops(plugin).getAllShopsList(currentTag);
+			int count = 0;
+			int slotCount = 27;
+			while (count != 9) {
+				if (!shops.isEmpty()) {
+					String uuidS = shops.get(0);
+					UUID uuid = UUID.fromString(uuidS);
+					Player p = Bukkit.getPlayer(uuid);
+					Menu.setItem(slotCount, new GUIItemManager(plugin).createSkullItem(p, "PLAYER_HEAD", 1, "&9&l" + p.getName(), null, false));
+					shops.remove(0);
+				} else {
+					Menu.setItem(slotCount, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+				}
+				count++;
+				slotCount++;
+			}
+		} else {
+			Menu.setItem(27, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(28, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(29, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(30, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(31, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(32, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(33, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(34, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+			Menu.setItem(35, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
+		}
+
 		// Glass Items >>
 		
 		Menu.setItem(0, new GUIItemManager(plugin).createInventoryGlassItem("CYAN_STAINED_GLASS_PANE", 1, " ", null, false));

@@ -2,6 +2,7 @@ package gg.salvos.morphie.events;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -39,6 +40,7 @@ public class PlayerFileEvent implements Listener {
 					pd.set("PlayerData.CurrentTag", String.valueOf(plugin.getConfig().getString("Tags.DefaultTag")));
 					pd.set("PlayerData.Lore", null);
 					pd.set("Stats.ShopVisits", Integer.valueOf(0));
+					pd.set("Tags", null);
   		            try {
   		              pd.save(file);
   		              plugin.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[&3MorphShops+&8] &aPlayer file succesfully created for &3" + player.getName() + "&a."));
