@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
 
 public class ReloadCommand {
 
-    private MorphShops plugin;
+    private final MorphShops plugin;
 
     public ReloadCommand(MorphShops plugin) {
         this.plugin = plugin;

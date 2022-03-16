@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class SetCommand {
 
-    private MorphShops plugin;
+    private final MorphShops plugin;
 
     public SetCommand(MorphShops plugin) {
         this.plugin = plugin;

@@ -2,17 +2,13 @@ package gg.salvos.morphie.commands;
 
 import gg.salvos.morphie.MorphShops;
 import gg.salvos.morphie.commands.admin.ReloadCommand;
-import gg.salvos.morphie.commands.player.HelpCommand;
-import gg.salvos.morphie.commands.player.RemoveCommand;
-import gg.salvos.morphie.commands.player.SetCommand;
+import gg.salvos.morphie.commands.player.*;
 import gg.salvos.morphie.menus.PlayerShops;
 import gg.salvos.morphie.util.MessagesManager;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class CommandHandler implements CommandExecutor {
 
@@ -58,6 +54,57 @@ public class CommandHandler implements CommandExecutor {
                     new RemoveCommand(plugin).removeShop(player);
                 } else {
                     sender.sendMessage(MessagesManager.addColor(MessagesManager.getMessage("ErrorPrefix") + MessagesManager.getMessage("NotAPlayer")));
+                }
+                return true;
+            } else if (args[0].equalsIgnoreCase("lock")) {
+                // Player Only
+                if (sender instanceof Player) {
+                    Player player = (Player) sender;
+                    new LockCommand(plugin).lockShopToggle(player);
+                } else {
+                    sender.sendMessage(MessagesManager.addColor(MessagesManager.getMessage("ErrorPrefix") + MessagesManager.getMessage("NotAPlayer")));
+                }
+                return true;
+            } else if (args[0].equalsIgnoreCase("lore")) {
+                // Player Only
+                if (sender instanceof Player) {
+                    Player player = (Player) sender;
+                    if (args.length > 1) {
+                        String lore1 = "";
+                        if (args[1].equalsIgnoreCase("remove")) {
+                            new LoreCommand(plugin).handleShopLore(player, "remove", null, null);
+                            return true;
+                        } else if (args.length > 2) {
+                            if (args[1].equalsIgnoreCase("add")) {
+                                for (int i = 2; i < args.length; i++) {
+                                    lore1 += args[i] += " ";
+                                }
+                                new LoreCommand(plugin).handleShopLore(player, "add", null, lore1);
+                                return true;
+                            } else if (args[1].equalsIgnoreCase("set")) {
+                                for (int i = 3; i < args.length; i++) {
+                                    lore1 += args[i] += " ";
+                                }
+                                try {
+                                    int line = Integer.parseInt(args[2]);
+                                    new LoreCommand(plugin).handleShopLore(player,"set", line, lore1);
+                                    return true;
+                                } catch (NumberFormatException e) {
+                                    sender.sendMessage(MessagesManager.addColor(MessagesManager.getMessage("ErrorPrefix") + MessagesManager.getMessage("NoArgs")));
+                                    return true;
+                                }
+                            }
+                        } else {
+                            sender.sendMessage(MessagesManager.addColor(MessagesManager.getMessage("ErrorPrefix") + MessagesManager.getMessage("NoArgs")));
+                            return true;
+                        }
+                    } else {
+                        sender.sendMessage(MessagesManager.addColor(MessagesManager.getMessage("ErrorPrefix") + MessagesManager.getMessage("NoArgs")));
+                        return true;
+                    }
+                } else {
+                    sender.sendMessage(MessagesManager.addColor(MessagesManager.getMessage("ErrorPrefix") + MessagesManager.getMessage("NotAPlayer")));
+                    return true;
                 }
                 return true;
             } else if (args[0].equalsIgnoreCase("reload")) {

@@ -39,17 +39,10 @@ public class Messages {
 				this.messagesCFG.addDefault("NoArgs", "&7Invalid args. Use &a/ps &7for commands!");
 				this.messagesCFG.addDefault("NotAPlayer", "&7only players can run this command!");
 				this.messagesCFG.addDefault("PlayerNameChange", "&7Player shop cannot be found! Name change?");
-				
-				this.messagesCFG.addDefault("Advert.Message", "&7Advert successfully purchased for &bCOST&7! &7Be sure to check out &b/ps advertise lore &7to add a advert message!");
-				this.messagesCFG.addDefault("Advert.AlreadyPurchased", "&7You already have an advert! Use &b/ps advertise lore &7to add a personal message to your advert!");
-				this.messagesCFG.addDefault("Advert.ListFull", "&7Advert list is currently full! Wait until there is a advert reset to try again.");
-				this.messagesCFG.addDefault("Advert.ResetBroadcast", "&7Adverts have been reset! Use &b/ps advertise &7 to buy a new spot!");
-				this.messagesCFG.addDefault("Advert.NoAdverts", "&7There are currently no adverts!");
-				this.messagesCFG.addDefault("Advert.Usage", "&7Use &b/ps advertise &7to buy one!");
-				this.messagesCFG.addDefault("Advert.LoreAdded", "&7Added lore line!");
-				this.messagesCFG.addDefault("Advert.LoreFull", "&7You have 3 lore lines set! &8(&b/ps advertise lore delete &7to reset them!&8)");
-				this.messagesCFG.addDefault("Advert.LoreDeleted", "&7Lore successfully deleted!");
-				this.messagesCFG.addDefault("Advert.ConfirmMessage", "&7Type &b/ps advertise &7again to confirm! This will cost&8: &bCOST");
+				this.messagesCFG.addDefault("AddLore", "&7Successfully added LORE.");
+				this.messagesCFG.addDefault("FullLore", "&7All lore lines have been filled. Try &a/ps lore set <num> <lore>");
+				this.messagesCFG.addDefault("SetLore", "&7Successfully set LORE &7to line &aLINE.");
+				this.messagesCFG.addDefault("RemoveLore", "&7Successfully removed all lore lines.");
 				
 				this.messagesCFG.addDefault("Commands.Header", "&7&m--&8&m-&7&m----------------------------------------------&8&m-&7&m--");
 				this.messagesCFG.addDefault("Commands.Title", "&9&lMorphShops&a+ &8» &aVERSION");
@@ -62,8 +55,9 @@ public class Messages {
 				this.messagesCFG.addDefault("Commands.PsLock", "&8» &a/ps lock &8- &7Locks OR unlocks your shop. &8(&7Toggle&8)");
 				this.messagesCFG.addDefault("Commands.PsRemove", "&8» &a/ps remove &8- &7Deletes your shop &bAND &7advertisement!");
 				this.messagesCFG.addDefault("Commands.PsAdvertise", "&8» &a/ps advertise &8- &7Buy an advert spot for a set cost.");
-				this.messagesCFG.addDefault("Commands.PsLore", "&8» &a/ps lore <loreline> <lore> &8- &7Adds a custom message to your advert. &8(&7Only up to 3 lines!&8)");
-				this.messagesCFG.addDefault("Commands.PsLoreDelete", "&8» &a/ps lore delete &8- &7Reset all lore lines!");
+				this.messagesCFG.addDefault("Commands.PsLoreAdd", "&8» &a/ps lore add <lore> &8- &7Adds a line of lore to your shop in numerical order. &8(&7Only 1-3!&8)");
+				this.messagesCFG.addDefault("Commands.PsLoreSet", "&8» &a/ps lore set <linenumber> <lore> &8- &7Set a specific line of lore on your shop. &8(&7Only 1-3!&8)");
+				this.messagesCFG.addDefault("Commands.PsLoreRemove", "&8» &a/ps lore remove &8- &7Remove all lines of lore on your shop.");
 				this.messagesCFG.addDefault("Commands.PsReset", "&8» &9/ps reset &8- &7Resets the advert list!");
 				this.messagesCFG.addDefault("Commands.PsReload", "&8» &9/ps reload &8- &7Reloads all plugin files!");
 				this.messagesCFG.addDefault("Commands.Footer", "&7&m--&8&m-&7&m----------------------------------------------&8&m-&7&m--");
@@ -104,9 +98,15 @@ public class Messages {
 				list5.add(" ");
 				list5.add("&7Click to go to the next page!");
 				list5.add(" ");
+
+				List<String> list6 = new ArrayList<String>();
+				list6.add(" ");
+				list6.add("&7Locked&8: LOCK_STATUS");
+				list6.add("&7Tags&8: PLAYER_TAGS");
+				list6.add(" ");
 				
 				this.messagesCFG.addDefault("Menu.PlayerShops.Title", "&8» &9&lMorphShops&8: &aPlayer Shops &8«");
-				this.messagesCFG.addDefault("Menu.PlayerShops.ShopTitle", "&9&lPLAYER's &ashop.");
+				this.messagesCFG.addDefault("Menu.PlayerShops.ShopTitle", "&9&lPLAYER's &ashop");
 				this.messagesCFG.addDefault("Menu.PlayerShops.InfoBook", "&9&lInformation&8:");
 				this.messagesCFG.addDefault("Menu.PlayerShops.InfoBookLore", list2);
 				this.messagesCFG.addDefault("Menu.PlayerShops.TagFilterTitle", "&9&lTag Filter&8:");
@@ -116,7 +116,7 @@ public class Messages {
 				this.messagesCFG.addDefault("Menu.PlayerShops.PageTitle", "&9&lCurrent Page&8: &aPAGE");
 				this.messagesCFG.addDefault("Menu.PlayerShops.PageNextTitle", "&9&lNext Page&8:");
 				this.messagesCFG.addDefault("Menu.PlayerShops.PageNextLore", list5);
-				this.messagesCFG.addDefault("Menu.PlayerShops.DefaultShopLore", "&7Come to my shop I've got much product!");
+				this.messagesCFG.addDefault("Menu.PlayerShops.DefaultShopLore", list6);
 				this.messagesCFG.addDefault("Menu.PlayerShops.LockedShop", "&8[&c&l✕&8] &7Shop currently locked.");
 				this.messagesCFG.addDefault("Menu.CreditsTitle", "&9&lCredits&8:");
 				this.messagesCFG.addDefault("Menu.CreditsLore", list);

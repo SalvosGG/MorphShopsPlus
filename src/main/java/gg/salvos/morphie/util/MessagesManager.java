@@ -1,13 +1,13 @@
 package gg.salvos.morphie.util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-
 import gg.salvos.morphie.MorphShops;
 import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class MessagesManager {
 	
@@ -61,5 +61,37 @@ public class MessagesManager {
 			return null;
 		}
 		return ChatColor.translateAlternateColorCodes('&', message);
+	}
+
+	// Get the default lore of player shops + add any lore the player adds.
+	public ArrayList<String> getLore(Player player) {
+		List<String> lore = new MessagesManager(plugin).getLoreList("Menu.PlayerShops.DefaultShopLore");
+		List<String> playerLore = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore");
+		List<String> tags = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "Tags");
+		Boolean locked = new PlayerDataManager(plugin).getBoolean(player.getUniqueId(), "PlayerData.Locked");
+		if (locked) {
+			return getPlayerLore(player, "&aTrue", lore, tags);
+		} else {
+			return getPlayerLore(player, "&cFalse", lore, tags);
+		}
+	}
+
+	// Replace and add player lore if applicable.
+	private ArrayList<String> getPlayerLore(Player player, String lock, List<String> lore, List<String> tags) {
+		ArrayList<String> newLore = new ArrayList<>();
+		for(String s : lore) {
+			if (!tags.isEmpty()) {
+				newLore.add(MessagesManager.addColor(s.replace("LOCK_STATUS", lock).replace("PLAYER_TAGS", tags.toString())));
+			} else {
+				newLore.add(MessagesManager.addColor(s.replace("LOCK_STATUS", lock).replace("PLAYER_TAGS", plugin.getConfig().getString("Tags.DefaultTag"))));
+			}
+		}
+		if (new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore")!=null) {
+			List<String> playerLore = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore");
+			for (String s : playerLore) {
+				newLore.add(MessagesManager.addColor(s));
+			}
+		}
+		return newLore;
 	}
 }

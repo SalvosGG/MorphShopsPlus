@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -69,7 +70,9 @@ public class PlayerShops {
 					String uuidS = shops.get(0);
 					UUID uuid = UUID.fromString(uuidS);
 					Player p = Bukkit.getPlayer(uuid);
-					Menu.setItem(slotCount, new GUIItemManager(plugin).createSkullItem(p, "PLAYER_HEAD", 1, "&9&l" + p.getName(), null, false));
+					ArrayList<String> lore = new MessagesManager(plugin).getLore(p);
+					String title = MessagesManager.getMessage("Menu.PlayerShops.ShopTitle");
+					Menu.setItem(slotCount, new GUIItemManager(plugin).createSkullItem(p, "PLAYER_HEAD", 1, title.replace("PLAYER", p.getName()), lore, false));
 					shops.remove(0);
 				} else {
 					Menu.setItem(slotCount, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));

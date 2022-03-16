@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class HelpCommand {
 
-    private MorphShops plugin;
+    private final MorphShops plugin;
 
     public HelpCommand(MorphShops plugin) {
         this.plugin = plugin;
@@ -26,8 +26,9 @@ public class HelpCommand {
         p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsLock")));
         p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsRemove")));
         p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsAdvertise")));
-        p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsLore")));
-        p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsLoreDelete")));
+        p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsLoreAdd")));
+        p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsLoreSet")));
+        p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsLoreRemove")));
         p.sendMessage(" ");
         p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsReset")));
         p.sendMessage(MessagesManager.addColor(new MessagesManager(plugin).getMessage("Commands.PsReload")));

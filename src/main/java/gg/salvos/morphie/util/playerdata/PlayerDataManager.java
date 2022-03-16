@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import gg.salvos.morphie.MorphShops;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -88,6 +89,22 @@ public class PlayerDataManager {
 	    {
 	      e.printStackTrace();
 	    }
+	}
+
+	public void setLoreLine(Player player, UUID uuid, String string, String loreline, int  index) {
+		File file = getPlayerFile(player.getUniqueId());
+		FileConfiguration fc = YamlConfiguration.loadConfiguration(file);
+		List<String> lore = getStringList(uuid, string);
+		lore.set(index-1, loreline);
+		fc.set(string, lore);
+		try
+		{
+			fc.save(file);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void setDouble(Player player, UUID uuid, String string, Double i) {
