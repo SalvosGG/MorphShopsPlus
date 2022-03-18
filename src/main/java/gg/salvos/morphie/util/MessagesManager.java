@@ -3,6 +3,7 @@ package gg.salvos.morphie.util;
 import gg.salvos.morphie.MorphShops;
 import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -64,20 +65,31 @@ public class MessagesManager {
 	}
 
 	// Get the default lore of player shops + add any lore the player adds.
-	public ArrayList<String> getLore(Player player) {
+	public ArrayList<String> getLore(Player player, OfflinePlayer oplayer) {
 		List<String> lore = new MessagesManager(plugin).getLoreList("Menu.PlayerShops.DefaultShopLore");
-		List<String> playerLore = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore");
-		List<String> tags = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "Tags");
-		Boolean locked = new PlayerDataManager(plugin).getBoolean(player.getUniqueId(), "PlayerData.Locked");
-		if (locked) {
-			return getPlayerLore(player, "&aTrue", lore, tags);
+		if (player != null) {
+			List<String> playerLore = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore");
+			List<String> tags = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "Tags");
+			Boolean locked = new PlayerDataManager(plugin).getBoolean(player.getUniqueId(), "PlayerData.Locked");
+			if (locked) {
+				return getPlayerLore(player, null,"&aTrue", lore, tags);
+			} else {
+				return getPlayerLore(player, null,"&cFalse", lore, tags);
+			}
 		} else {
-			return getPlayerLore(player, "&cFalse", lore, tags);
+			List<String> playerLore = new PlayerDataManager(plugin).getStringList(oplayer.getUniqueId(), "PlayerData.Lore");
+			List<String> tags = new PlayerDataManager(plugin).getStringList(oplayer.getUniqueId(), "Tags");
+			Boolean locked = new PlayerDataManager(plugin).getBoolean(oplayer.getUniqueId(), "PlayerData.Locked");
+			if (locked) {
+				return getPlayerLore(null, oplayer, "&aTrue", lore, tags);
+			} else {
+				return getPlayerLore(null, oplayer, "&cFalse", lore, tags);
+			}
 		}
 	}
 
 	// Replace and add player lore if applicable.
-	private ArrayList<String> getPlayerLore(Player player, String lock, List<String> lore, List<String> tags) {
+	private ArrayList<String> getPlayerLore(Player player, OfflinePlayer oplayer, String lock, List<String> lore, List<String> tags) {
 		ArrayList<String> newLore = new ArrayList<>();
 		for(String s : lore) {
 			if (!tags.isEmpty()) {
@@ -86,10 +98,19 @@ public class MessagesManager {
 				newLore.add(MessagesManager.addColor(s.replace("LOCK_STATUS", lock).replace("PLAYER_TAGS", plugin.getConfig().getString("Tags.DefaultTag"))));
 			}
 		}
-		if (new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore")!=null) {
-			List<String> playerLore = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore");
-			for (String s : playerLore) {
-				newLore.add(MessagesManager.addColor(s));
+		if (player != null) {
+			if (new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore")!=null) {
+				List<String> playerLore = new PlayerDataManager(plugin).getStringList(player.getUniqueId(), "PlayerData.Lore");
+				for (String s : playerLore) {
+					newLore.add(MessagesManager.addColor(s));
+				}
+			}
+		} else {
+			if (new PlayerDataManager(plugin).getStringList(oplayer.getUniqueId(), "PlayerData.Lore")!=null) {
+				List<String> playerLore = new PlayerDataManager(plugin).getStringList(oplayer.getUniqueId(), "PlayerData.Lore");
+				for (String s : playerLore) {
+					newLore.add(MessagesManager.addColor(s));
+				}
 			}
 		}
 		return newLore;

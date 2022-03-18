@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import gg.salvos.morphie.MorphShops;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -37,10 +38,14 @@ public class GUIItemManager {
     	return localItemStack;
     }
 
-	public ItemStack createSkullItem(Player player, String material, int amount, String title, ArrayList<String> lore, boolean glow) {
+	public ItemStack createSkullItem(Player player, OfflinePlayer oplayer, String material, int amount, String title, ArrayList<String> lore, boolean glow) {
 		ItemStack localItemStack = new ItemStack(Material.matchMaterial(material), amount);
 		SkullMeta skull = (SkullMeta) localItemStack.getItemMeta();
-		skull.setOwningPlayer(player);
+		if (player != null) {
+			skull.setOwningPlayer(player);
+		} else {
+			skull.setOwningPlayer(oplayer);
+		}
 		skull.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ATTRIBUTES });
 		skull.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_POTION_EFFECTS });
 		skull.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_DESTROYS });
@@ -66,5 +71,4 @@ public class GUIItemManager {
     	localItemStack.setItemMeta(localItemMeta);
     	return localItemStack;
     }
-
 }

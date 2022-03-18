@@ -7,6 +7,7 @@ import gg.salvos.morphie.util.MessagesManager;
 import gg.salvos.morphie.util.playerdata.PlayerDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -70,9 +71,15 @@ public class PlayerShops {
 					String uuidS = shops.get(0);
 					UUID uuid = UUID.fromString(uuidS);
 					Player p = Bukkit.getPlayer(uuid);
-					ArrayList<String> lore = new MessagesManager(plugin).getLore(p);
 					String title = MessagesManager.getMessage("Menu.PlayerShops.ShopTitle");
-					Menu.setItem(slotCount, new GUIItemManager(plugin).createSkullItem(p, "PLAYER_HEAD", 1, title.replace("PLAYER", p.getName()), lore, false));
+					if (p != null) {
+						ArrayList<String> lore = new MessagesManager(plugin).getLore(p, null);
+						Menu.setItem(slotCount, new GUIItemManager(plugin).createSkullItem(p, null, "PLAYER_HEAD", 1, title.replace("PLAYER", p.getName()), lore, false));
+					} else {
+						OfflinePlayer op = Bukkit.getOfflinePlayer(uuid);
+						ArrayList<String> lore = new MessagesManager(plugin).getLore(null, op);
+						Menu.setItem(slotCount, new GUIItemManager(plugin).createSkullItem(null, op, "PLAYER_HEAD", 1, title.replace("PLAYER", op.getName()), lore, false));
+					}
 					shops.remove(0);
 				} else {
 					Menu.setItem(slotCount, new GUIItemManager(plugin).createInventoryItem("STRUCTURE_VOID", 1, "&9&lThis could be your shop!", null, false));
